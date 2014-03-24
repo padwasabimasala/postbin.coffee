@@ -3,3 +3,4 @@
 --ui bdd
 --compilers coffee:coffee-script/register
 --globals config
+--recursive
