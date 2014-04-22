@@ -9,4 +9,10 @@ describe FixedList, ->
     fixed_list = new FixedList(3)
     fixed_list.size.should.equal 3
 
+  it 'adds items', ->
+    fixed_list = new FixedList(3)
+    fixed_list.add 1
+
+
+
 
