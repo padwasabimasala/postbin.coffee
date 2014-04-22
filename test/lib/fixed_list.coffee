@@ -13,10 +13,10 @@ describe FixedList, ->
     fixed_list = new FixedList(3)
     fixed_list.add 1
 
-  xit 'returns the items', ->
+  it 'returns the items', ->
     fixed_list = new FixedList(3)
     fixed_list.add 1
-    fixed_list.items.should.equal [1]
+    fixed_list.items.should.eql [1]
 
 
 
