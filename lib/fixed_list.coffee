@@ -1,7 +1,8 @@
-FixedList = (size) ->
-  this.size = size || 100
+class FixedList
+  constructor: (size) ->
+    @size = size || 100
 
-FixedList.prototype.add = (item) ->
-  console.log item
+  add: (item) ->
+
 
 module.exports = FixedList
