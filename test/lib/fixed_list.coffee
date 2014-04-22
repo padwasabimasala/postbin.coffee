@@ -24,7 +24,7 @@ describe FixedList, ->
     fixed_list.add 2
     fixed_list.add 3
     fixed_list.add 4
-    fixed_list.items.should.eql [2,3,4]
+    fixed_list.items.should.eql [4,3,2]
 
 
 

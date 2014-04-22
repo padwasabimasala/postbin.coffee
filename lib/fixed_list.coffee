@@ -4,7 +4,8 @@ class FixedList
     @items = []
 
   add: (item) ->
-    @items.push item
-
+    @items.unshift item
+    if @items.length > @size
+      @items.pop()
 
 module.exports = FixedList
