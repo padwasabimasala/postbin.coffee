@@ -6,6 +6,6 @@ describe 'app', ->
     api = supertest app
     api.get('/').expect(200, done)
 
-  it 'accepts posts to index', (done) ->
+  it 'accepts posts to /posts/:name', (done) ->
     api = supertest app
-    api.post('/').send({ name: "Any Name" }).expect(200, done)
+    api.post('/posts/event-name').send({ value: "Any Value" }).expect(200, done)

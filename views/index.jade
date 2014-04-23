@@ -3,3 +3,12 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  each event in events_list
+    h2= event.name
+    p at #{event.created_at}
+    h3 headers
+    pre
+      !=JSON.stringify(event.headers, null, 2)
+    h3 body
+    pre
+      !=JSON.stringify(event.body, null, 2)
