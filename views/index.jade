@@ -1,8 +1,7 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1= Postbin
   each event in events_list
     h2= event.name
     p at #{event.created_at}
