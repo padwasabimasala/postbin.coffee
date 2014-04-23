@@ -1,7 +1,7 @@
 moment = require 'moment'
 
 FixedList = require '../lib/fixed_list'
-events_list = new FixedList(1000)
+events_list = new FixedList(process.env.EVENT_LIST_SIZE || 50)
 
 exports.index = (req, res) ->
   res.render('index', { title: 'Express', events_list: events_list.items })
