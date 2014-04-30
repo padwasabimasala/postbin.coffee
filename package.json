@@ -1,10 +1,12 @@
 {
   "name": "postbin",
+  "repository": "https://github.com/octanner/postbin.coffee",
   "dependencies": {
+    "aws-sqs": "0.0.6",
+    "coffee-script": "~1.7.1",
     "express": "3.5.0",
     "jade": "1.3.0",
-    "moment": "~2.6.0",
-    "coffee-script": "~1.7.1"
+    "moment": "~2.6.0"
   },
   "devDependencies": {
     "mocha": "~1.18.2",
