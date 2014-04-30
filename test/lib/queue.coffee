@@ -6,8 +6,7 @@ class MockClient
     @history = ["init"]
 
   createQueue: (name, fn) ->
-    queue_name = process.env.QUEUE_PREFIX + '.' + name
-    @history.push(["createQueue", queue_name])
+    @history.push(["createQueue", name])
     console.dir @history
     [null, ""]
 
