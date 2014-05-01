@@ -3,8 +3,8 @@ extends layout
 block content
   h1= Postbin
   h2= Stats
-    p Reqs/sec #{stats.requests_per_second} Total Reqs #{stats.total_requests} Uptime Secs #{stats.uptime}
-    p Time in ms: last #{stats.req_time_last} ave #{stats.req_time_ave} min #{stats.req_time_min} max #{stats.req_time_max}
+    p Request Count #{stats.total_requests} Uptime: #{stats.uptime} Requests/Second: #{stats.requests_per_second}
+    p Request Time (ms) Last: #{stats.req_time_last} Ave: #{stats.req_time_ave} Min: #{stats.req_time_min} Max: #{stats.req_time_max}
 
   each event in events_list
     h2= event.name
