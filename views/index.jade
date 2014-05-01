@@ -3,7 +3,7 @@ extends layout
 block content
   h1= Postbin
   h2= Stats
-    p total requests: #{stats.total_requests}
+    p Requests/second #{stats.requests_per_second} Total Requests #{stats.total_requests} Uptime #{stats.uptime}
     p Time in ms: last #{stats.req_time_last} ave #{stats.req_time_ave} min #{stats.req_time_min} max #{stats.req_time_max}
 
   each event in events_list

@@ -6,7 +6,11 @@ moment = require 'moment'
 events_list = new FixedList(process.env.EVENT_LIST_SIZE || 50)
 queue = new Queue
 
+service_start = new Date()
+
 stats = {
+  uptime: 0,
+  requests_per_second: 0,
   total_requests: 0,
   req_time_max: 0,
   req_time_min: 1000000,
@@ -17,7 +21,7 @@ stats = {
 tally_stats = (time) ->
   stats.req_time_last = time
 
-  ave = (stats.total_requests * stats.req_time_ave) + time) / (stats.total_requests + 1)
+  ave = ((stats.total_requests * stats.req_time_ave) + time) / (stats.total_requests + 1)
   stats.req_time_ave = Math.round(ave * 100) / 100
   stats.total_requests++
 
@@ -26,6 +30,8 @@ tally_stats = (time) ->
 
   if stats.req_time_min > time
     stats.req_time_min = time
+
+
 
 
   console.log 'took: ' + time + 'ms'
