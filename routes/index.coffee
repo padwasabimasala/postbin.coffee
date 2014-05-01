@@ -15,7 +15,7 @@ exports.create = (req, res) ->
     headers: req.headers,
     body: req.body
   }
-  queue.send event.name, JSON.stringify(event)
+  #queue.send event.name, JSON.stringify(event)
   console.log JSON.stringify event, null, 2
   events_list.add event
   res.write ''
