@@ -14,7 +14,7 @@ class Queue
 
   send: (name, message) ->
     prefix = process.env.QUEUE_PREFIX || "queue_prefix_not_set_in_env"
-    queue_name = prefix + '.' + name
+    queue_name = prefix + '_' + name
     @client.createQueue queue_name, (err,res) ->
       if err
         console.log 'Error on createQueue: ' + err
