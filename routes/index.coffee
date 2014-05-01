@@ -35,7 +35,7 @@ tally_stats = (time) ->
   if stats.req_time_min > time
     stats.req_time_min = time
 
-  stats.uptime =  (new Date() - service_start) / 1000
+  stats.uptime =  Math.round(new Date() - service_start) / 1000
   stats.requests_per_second = round stats.total_requests / stats.uptime
 
   console.log 'took: ' + time + 'ms'
