@@ -15,14 +15,24 @@ class Queue
   send: (name, message) ->
     prefix = process.env.QUEUE_PREFIX || "queue_prefix_not_set_in_env"
     queue_name = prefix + '_' + name
+    client = @client
     @client.createQueue queue_name, (err,res) ->
       if err
         console.log 'Error on createQueue: ' + err
       else
-        @client.sendMessage res, message, 0, (err, res) ->
+
+        console.log 'Atempting to send'
+        console.log 'res -------------'
+        console.dir res
+        console.log 'message -------------'
+        console.dir message
+
+        client.sendMessage res, message, 0, (err, res) ->
           if err
             console.log 'Error on sendMessage: ' + err
           true
+
+        console.log 'message sent'
       true
     true
 
