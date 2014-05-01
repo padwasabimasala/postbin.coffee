@@ -2,6 +2,8 @@ moment = require 'moment'
 FixedList = require '../lib/fixed_list'
 Queue = require '../lib/queue'
 
+stats = {}
+
 events_list = new FixedList(process.env.EVENT_LIST_SIZE || 50)
 queue = new Queue
 

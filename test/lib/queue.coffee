@@ -9,4 +9,4 @@ describe Queue, ->
       client = new MockSQS()
       q = new Queue client
       q.send("the_queue", "the message").should.equal true
-      client.last_call().should.eql ["createQueue", "oc-postbin-local.the_queue"]
+      client.last_call().should.eql ["createQueue", "oc-postbin-local_the_queue"]
