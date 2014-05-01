@@ -5,6 +5,7 @@ block content
   h2= Stats
     p total requests: #{stats.total_requests}
     p Time in ms: last #{stats.req_time_last} ave #{stats.req_time_ave} min #{stats.req_time_min} max #{stats.req_time_max}
+
   each event in events_list
     h2= event.name
     p at #{event.created_at}

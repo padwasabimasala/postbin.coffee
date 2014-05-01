@@ -17,7 +17,8 @@ stats = {
 tally_stats = (time) ->
   stats.req_time_last = time
 
-  stats.req_time_ave = ((stats.total_requests * stats.req_time_ave) + time) / (stats.total_requests + 1)
+  ave = (stats.total_requests * stats.req_time_ave) + time) / (stats.total_requests + 1)
+  stats.req_time_ave = Math.round(ave * 100) / 100
   stats.total_requests++
 
   if stats.req_time_max < time
