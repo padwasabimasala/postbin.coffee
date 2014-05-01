@@ -1,6 +1,9 @@
+SQS = require 'aws-sqs'
+
 class Queue
   constructor: (client) ->
-    @client = client
+    # TODO pivot based on process.env.NODE_ENV
+    @client = client || new SQS(process.env.AWS_SQS_ID, process.env.AWS_SQS_KEY)
     @queues = {}
 
   send: (name, message) ->
