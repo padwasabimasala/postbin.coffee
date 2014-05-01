@@ -18,11 +18,15 @@ stats = {
   req_time_last: 0
 }
 
+round = (number) ->
+  Math.round(number * 100) / 100
+
 tally_stats = (time) ->
   stats.req_time_last = time
 
   ave = ((stats.total_requests * stats.req_time_ave) + time) / (stats.total_requests + 1)
-  stats.req_time_ave = Math.round(ave * 100) / 100
+  stats.req_time_ave = round ave
+
   stats.total_requests++
 
   if stats.req_time_max < time
@@ -31,8 +35,8 @@ tally_stats = (time) ->
   if stats.req_time_min > time
     stats.req_time_min = time
 
-
-
+  stats.uptime = round new Date() - service_start
+  stats.requests_per_second = stats.total_requests / stats.uptime
 
   console.log 'took: ' + time + 'ms'
 
