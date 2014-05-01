@@ -1,9 +1,15 @@
 SQS = require 'aws-sqs'
+MockSQS = require '../test/mock_sqs'
+
+_select_client = () ->
+  if process.env.NODE_ENV == 'test'
+    new MockSQS()
+  else
+    new SQS(process.env.AWS_SQS_ID, process.env.AWS_SQS_KEY)
 
 class Queue
   constructor: (client) ->
-    # TODO pivot based on process.env.NODE_ENV
-    @client = client || new SQS(process.env.AWS_SQS_ID, process.env.AWS_SQS_KEY)
+    @client = client || _select_client()
     @queues = {}
 
   send: (name, message) ->
@@ -19,6 +25,7 @@ class Queue
           true
       true
     true
+
 
 module.exports = Queue
 
