@@ -1,7 +1,6 @@
 moment = require 'moment'
 FixedList = require '../lib/fixed_list'
 Queue = require '../lib/queue'
-moment = require 'moment'
 
 events_list = new FixedList(process.env.EVENT_LIST_SIZE || 50)
 queue = new Queue
@@ -54,9 +53,8 @@ exports.create = (req, res) ->
     body: req.body
   }
 
-  console.log event.name
-
   queue.send event.name, JSON.stringify(event)
+  console.log "received event"
   console.log JSON.stringify event, null, 2
   events_list.add event
 

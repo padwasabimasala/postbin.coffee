@@ -5,7 +5,6 @@ class MockSQS
 
   createQueue: (name, fn) ->
     @history.push(["createQueue", name])
-    console.dir @history
     [null, ""]
 
   last_call: () ->
