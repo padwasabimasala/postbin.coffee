@@ -17,6 +17,8 @@ app.configure 'production', () ->
       console.log 'redirecting to https'
       res.redirect 'https://' + req.headers.host + req.url
 
+  app.get '/', express.basicAuth('obert','obert'), routes.index
+
 app.configure 'development', () ->
   app.use express.errorHandler()
 
@@ -26,7 +28,6 @@ app.use express.urlencoded()
 app.use express.methodOverride()
 app.use app.router
 app.use express.static(path.join(__dirname, 'public'))
-
 app.get '/', routes.index
 app.post '/posts/:event_name', routes.create
 
