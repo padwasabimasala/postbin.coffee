@@ -20,12 +20,7 @@ class Queue
       if err
         console.log 'Error on createQueue: ' + err
       else
-
-        console.log 'Atempting to send'
-        console.log 'res -------------'
-        console.dir res
-        console.log 'message -------------'
-        console.dir message
+        console.log 'enqueing message: ' + message
 
         client.sendMessage res, message, 0, (err, res) ->
           if err

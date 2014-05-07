@@ -54,8 +54,6 @@ exports.create = (req, res) ->
   }
 
   queue.send event.name, JSON.stringify(event)
-  console.log "received event"
-  console.log JSON.stringify event, null, 2
   events_list.add event
 
   res.write ''
