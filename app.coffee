@@ -1,11 +1,15 @@
 express = require 'express'
 path = require 'path'
+auth = require 'http-auth'
 routes = require './routes'
 app = express()
 
 app.set 'port', process.env.PORT || 3000
 app.set 'views', path.join(__dirname, 'views')
 app.set 'view engine', 'jade'
+
+basic = auth.basic { realm: 'octanner' }, (username, password, callback) ->
+  callback username == password == 'obert'
 
 # Force https in prod
 app.configure 'production', () ->
@@ -17,8 +21,6 @@ app.configure 'production', () ->
       console.log 'redirecting to https'
       res.redirect 'https://' + req.headers.host + req.url
 
-  #app.get '/', express.basicAuth('obert','obert'), routes.index
-
 app.configure 'development', () ->
   app.use express.errorHandler()
 
@@ -28,7 +30,7 @@ app.use express.urlencoded()
 app.use express.methodOverride()
 app.use app.router
 app.use express.static(path.join(__dirname, 'public'))
-app.get '/', routes.index
+app.get '/', auth.connect(basic), routes.index
 app.post '/posts/:event_name', routes.create
 
 module.exports = app
